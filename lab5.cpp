@@ -6,16 +6,13 @@
 int main()
 {
 	int arr[RAWS][COLUMNS];
-	int num = 0, target;
+	int sum = 0;
 
 	for (int i = 0; i < RAWS; i++)
 		for (int j = 0; j < COLUMNS; j++)
 			scanf_s("%d", &arr[i][j]);
-
-	printf("Search for: ");
-	scanf_s("%d", &target);
-
 	system("cls");
+
 	for (int i = 0; i < RAWS; i++)
 	{
 		for (int j = 0; j < COLUMNS; j++)
@@ -23,15 +20,11 @@ int main()
 		printf("\n");
 	}
 
-	for (int i = 0; i < RAWS; i++)
-		for (int j = 0; j < COLUMNS; j++)
-		{
-			if (arr[i][j] == target)
-			{
-				printf("[%d][%d]\n", i, j);
-				num++;
-			}
-		}
 
-	printf("Num: %d", num);
+	for (int i = 1; i < RAWS; i += 2)
+		for (int j = 1; j < COLUMNS; j += 2)
+			if (arr[i][j] % 2 == 1)
+				sum += arr[i][j];
+
+	printf("Sum: %d", sum);
 }
